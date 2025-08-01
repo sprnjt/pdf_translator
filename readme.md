@@ -56,6 +56,7 @@ Follow these steps to run the project on your local machine.
 1. Clone the Repository
 
 git clone https://github.com/sprnjt/pdf_translator.git
+
 cd pdf_translator
 
 
@@ -64,12 +65,14 @@ cd pdf_translator
 For macOS/Linux:
 
 python3 -m venv venv
+
 source venv/bin/activate
 
 
 For Windows:
 
 python -m venv venv
+
 .\venv\Scripts\activate
 
 
@@ -85,12 +88,14 @@ You need to provide your API keys. It is recommended to set them as environment 
 For macOS/Linux:
 
 export GEMINI_API_KEY="YOUR_GOOGLE_API_KEY_HERE"
+
 export SARVAM_API_KEY="YOUR_SARVAM_API_KEY_HERE"
 
 
 For Windows Command Prompt:
 
 set GEMINI_API_KEY="YOUR_GOOGLE_API_KEY_HERE"
+
 set SARVAM_API_KEY="YOUR_SARVAM_API_KEY_HERE"
 
 
@@ -102,3 +107,7 @@ flask run
 
 
 The application will be available at http://127.0.0.1:5000.
+
+##Contact
+
+For any issue, feel free to connect with Suparnojit on X/Twitter: suparnojit26
