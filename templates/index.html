@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Summarizer & Voice Translator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-2xl bg-white p-8 md:p-12 rounded-2xl shadow-lg text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">PDF Summarizer & Voice Translator</h1>
+        <p class="text-gray-600 mb-8">Upload a PDF, and I'll summarize, translate, and read it aloud in an Indian language.</p>
+
+        <form id="upload-form" action="/" method="post" enctype="multipart/form-data" class="space-y-6">
+            <div>
+                <label for="pdf_file" class="block text-lg font-medium text-gray-700 mb-2">1. Choose a PDF file</label>
+                <input type="file" name="pdf_file" id="pdf_file" required accept=".pdf"
+                       class="block w-full text-sm text-gray-500 file:mr-4 file:py-3 file:px-6
+                              file:rounded-full file:border-0 file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100
+                              cursor-pointer">
+            </div>
+
+            <div>
+                <label for="language-select" class="block text-lg font-medium text-gray-700 mb-2">2. Select a Language</label>
+                <select id="language-select" name="language_name" class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Hindi" data-code="hi">Hindi (हिन्दी)</option>
+                    <option value="Tamil" data-code="ta">Tamil (தமிழ்)</option>
+                    <option value="Telugu" data-code="te">Telugu (తెలుగు)</option>
+                    <option value="Kannada" data-code="kn">Kannada (ಕನ್ನಡ)</option>
+                    <option value="Bengali" data-code="bn">Bengali (বাংলা)</option>
+                    <option value="Gujarati" data-code="gu">Gujarati (ગુજરાતી)</option>
+                    <option value="Marathi" data-code="mr">Marathi (मराठी)</option>
+                </select>
+                <input type="hidden" id="language-code-input" name="language_code" value="hi">
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">
+                Summarize & Translate
+            </button>
+        </form>
+        
+        <div id="loading-spinner" class="hidden mt-8 flex flex-col items-center">
+            <div class="loader"></div>
+            <p class="mt-4 text-gray-600 font-medium">Analyzing your document... this may take a moment.</p>
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const langSelect = document.getElementById('language-select');
+        const langCodeInput = document.getElementById('language-code-input');
+
+        langSelect.addEventListener('change', (e) => {
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            langCodeInput.value = selectedOption.dataset.code;
+        });
+
+        form.addEventListener('submit', () => {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            form.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
