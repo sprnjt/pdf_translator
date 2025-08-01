@@ -49,18 +49,18 @@ A web application that summarizes PDF documents, translates the summary into Ind
 - Gunicorn
 - Render
 
-Local Setup and Installation
+## Local Setup and Installation
 
 Follow these steps to run the project on your local machine.
 
-1. Clone the Repository
+1. **Clone the Repository**
 
 git clone https://github.com/sprnjt/pdf_translator.git
 
 cd pdf_translator
 
 
-2. Create and Activate a Virtual Environment
+2. **Create and Activate a Virtual Environment**
 
 For macOS/Linux:
 
@@ -76,12 +76,12 @@ python -m venv venv
 .\venv\Scripts\activate
 
 
-3. Install Dependencies
+3. **Install Dependencies**
 
 pip install -r requirements.txt
 
 
-4. Configure Environment Variables
+4. **Configure Environment Variables**
 
 You need to provide your API keys. It is recommended to set them as environment variables.
 
@@ -101,13 +101,13 @@ set SARVAM_API_KEY="YOUR_SARVAM_API_KEY_HERE"
 
 Note: Alternatively, you can temporarily hardcode the keys in app.py for local testing, but do not commit them to version control.
 
-5. Run the Application
+5. **Run the Application**
 
 flask run
 
 
 The application will be available at http://127.0.0.1:5000.
 
-##Contact
+## Contact
 
 For any issue, feel free to connect with Suparnojit on X/Twitter: suparnojit26
